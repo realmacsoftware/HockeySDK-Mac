@@ -34,6 +34,9 @@
 #import <CrashReporter/CrashReporter.h>
 
 
+static NSString * const _BITCrashReporterUserNameDefaultKey = @"crashReporterUserName";
+static NSString * const _BITCrashReporterUserEmailDefaultKey = @"crashReporterUserEmail";
+
 @interface BITCrashReportUI(private)
 - (void) askCrashReportDetails;
 - (void) endCrashReporter;
@@ -102,6 +105,9 @@ const CGFloat kDetailsHeight = 285;
   if ([crashLogTextView respondsToSelector:@selector(setAutomaticSpellingCorrectionEnabled:)]) {
     [crashLogTextView setAutomaticSpellingCorrectionEnabled:NO];
   }
+  
+  [self setUserName:[[NSUserDefaults standardUserDefaults] stringForKey:_BITCrashReporterUserNameDefaultKey]];
+  [self setUserEmail:[[NSUserDefaults standardUserDefaults] stringForKey:_BITCrashReporterUserEmailDefaultKey]];
 }
 
 
@@ -170,6 +176,9 @@ const CGFloat kDetailsHeight = 285;
 }
 
 - (IBAction)submitReport:(id)sender {
+  [[NSUserDefaults standardUserDefaults] setObject:self.userName forKey:_BITCrashReporterUserNameDefaultKey];
+  [[NSUserDefaults standardUserDefaults] setObject:self.userEmail forKey:_BITCrashReporterUserEmailDefaultKey];
+  
   [showButton setEnabled:NO];
   [hideButton setEnabled:NO];
   [cancelButton setEnabled:NO];
