@@ -218,6 +218,7 @@
 				4C7E213C159C900B00D02AD1 /* CopyFiles */,
 				1EF09D891523574200067A5C /* Headers */,
 				1EF09DC2152357DD00067A5C /* Change CrashReporter framework load path */,
+				6DA838C717EC9F5C00E13700 /* Codesign CrashReporter */,
 			);
 			buildRules = (
 			);
@@ -286,6 +287,21 @@
 			shellPath = /bin/sh;
 			shellScript = "install_name_tool -change \"@loader_path/../Frameworks/CrashReporter.framework/Versions/A/CrashReporter\"  \"@loader_path/Frameworks/CrashReporter.framework/Versions/A/CrashReporter\" \"$TARGET_BUILD_DIR/HockeySDK.framework/Versions/A/HockeySDK\"\n\nif [ ! -e \"$TARGET_BUILD_DIR/HockeySDK.framework/Frameworks\" ];\nthen \n    cd \"$TARGET_BUILD_DIR/HockeySDK.framework\"\n    ln -s \"Versions/Current/Frameworks\" \"Frameworks\"\nfi";
 		};
+		6DA838C717EC9F5C00E13700 /* Codesign CrashReporter */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Codesign CrashReporter";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "\ncodesign --sign \"${CODE_SIGN_IDENTITY}\" --force -v \"${TARGET_BUILD_DIR}/HockeySDK.framework/Frameworks/CrashReporter.framework\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -331,6 +347,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -351,6 +368,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
+				STRIP_STYLE = debugging;
 			};
 			name = Debug;
 		};
@@ -364,7 +382,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				COPY_PHASE_STRIP = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -377,6 +396,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.5;
 				SDKROOT = macosx;
+				STRIP_STYLE = debugging;
 			};
 			name = Release;
 		};
