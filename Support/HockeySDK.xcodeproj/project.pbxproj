@@ -410,8 +410,6 @@
 				1EF09D881523574200067A5C /* Frameworks */,
 				4C7E213C159C900B00D02AD1 /* CopyFiles */,
 				1EF09D891523574200067A5C /* Headers */,
-				1EF09DC2152357DD00067A5C /* Change CrashReporter framework load path */,
-				6DA838C717EC9F5C00E13700 /* Codesign CrashReporter */,
 			);
 			buildRules = (
 			);
@@ -480,21 +478,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/appledoc \\\n--output \"${SOURCE_ROOT}/../documentation\" \\\n--ignore Vendor \\\n--ignore Products \\\n--ignore Support \\\n--ignore .m \\\n--ignore BITKeychainItem.h \\\n--ignore BITGenericKeychainItem.h \\\n--create-html \\\n--create-docset \\\n--install-docset \\\n--keep-intermediate-files \\\n--project-name \"${HOCKEYSDK_DOCSET_NAME} ${VERSION_STRING}\" \\\n--project-version \"${VERSION_STRING}\" \\\n--project-company \"Bit Stadium GmbH\" \\\n--company-id \"de.bitstadium\" \\\n--docset-bundle-name \"${HOCKEYSDK_DOCSET_NAME} ${VERSION_STRING}\" \\\n--docset-feed-name \"${HOCKEYSDK_DOCSET_NAME}\" \\\n--docset-desc \"\" \\\n--docset-platform-family \"macosx\" \\\n--index-desc \"${SOURCE_ROOT}/../docs/index.md\" \\\n--include \"${SOURCE_ROOT}/../docs/index.html\" \\\n--include \"${SOURCE_ROOT}/../docs/\" \\\n--merge-categories \\\n--no-repeat-first-par \\\n--warn-undocumented-object \\\n--warn-undocumented-member \\\n--warn-empty-description \\\n--warn-unknown-directive \\\n--warn-invalid-crossref \\\n--warn-missing-arg \\\n--logformat xcode \\\n--exit-threshold 2 \\\n\"${SOURCE_ROOT}/../\"\n";
-		};
-		6DA838C717EC9F5C00E13700 /* Codesign CrashReporter */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Codesign CrashReporter";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "\ncodesign --sign \"${CODE_SIGN_IDENTITY}\" --force -v \"${TARGET_BUILD_DIR}/HockeySDK.framework/Frameworks/CrashReporter.framework\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
