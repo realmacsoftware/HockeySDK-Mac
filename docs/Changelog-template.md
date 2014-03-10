@@ -1,3 +1,13 @@
+## Version 2.0.2
+
+- [BUGFIX] Fix a possible crash before sending the crash report when the selector could not be found
+
+## Version 2.0.1
+
+- [NEW] Crash reports now provide the selector name e.g. for crashes in `objc_msgSend`
+- [BUGFIX] Fixed a bug in french localization files that could cause the crash report UI to crash
+- [BUGFIX] Enabled `Skip Install` for the Framework target. This fixes a warning when archiving a project and including the SDK as a subproject
+
 ## Version 2.0
 
 - General
