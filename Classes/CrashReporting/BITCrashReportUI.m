@@ -2,7 +2,7 @@
  * Author: Andreas Linde <mail@andreaslinde.de>
  *         Kent Sutherland
  *
- * Copyright (c) 2012-2013 HockeyApp, Bit Stadium GmbH.
+ * Copyright (c) 2012-2014 HockeyApp, Bit Stadium GmbH.
  * Copyright (c) 2011 Andreas Linde & Kent Sutherland.
  * All rights reserved.
  *
@@ -33,6 +33,7 @@
 #import <HockeySDK/HockeySDK.h>
 #import "HockeySDKPrivate.h"
 
+#import "BITHockeyBaseManagerPrivate.h"
 #import "BITCrashManagerPrivate.h"
 
 #import <sys/sysctl.h>
@@ -57,7 +58,7 @@ const CGFloat kDetailsHeight = 285;
 @synthesize userEmail = _userEmail;
 
 
-- (instancetype)initWithManager:(BITCrashManager *)crashManager crashReportFile:(NSString *)crashReportFile crashReport:(NSString *)crashReport logContent:(NSString *)logContent companyName:(NSString *)companyName applicationName:(NSString *)applicationName askUserDetails:(BOOL)askUserDetails {
+- (instancetype)initWithManager:(BITCrashManager *)crashManager crashReportFile:(NSString *)crashReportFile crashReport:(NSString *)crashReport logContent:(NSString *)logContent applicationName:(NSString *)applicationName askUserDetails:(BOOL)askUserDetails {
   
   self = [super initWithWindowNibName: @"BITCrashReportUI"];
   
@@ -67,7 +68,6 @@ const CGFloat kDetailsHeight = 285;
     _crashFile = [crashReportFile copy];
     _crashLogContent = [crashReport copy];
     _logContent = [logContent copy];
-    _companyName = [companyName copy];
     _applicationName = [applicationName copy];
     self.userName = @"";
     self.userEmail = @"";
@@ -208,8 +208,8 @@ const CGFloat kDetailsHeight = 285;
 - (void)askCrashReportDetails {
 #define DISTANCE_BETWEEN_BUTTONS		3
   
-  
-  [[self window] setTitle:[NSString stringWithFormat:BITHockeyLocalizedString(@"WindowTitle", @""), _applicationName]];
+  NSString *title = BITHockeyLocalizedString(@"WindowTitle", @"");
+  [[self window] setTitle:[NSString stringWithFormat:title, _applicationName]];
   
   [[nameTextFieldTitle cell] setTitle:BITHockeyLocalizedString(@"NameTextTitle", @"")];
   [[nameTextField cell] setTitle:self.userName];
@@ -223,7 +223,8 @@ const CGFloat kDetailsHeight = 285;
     [[emailTextField cell] setUsesSingleLineMode:YES];
   }
 
-  [[introductionText cell] setTitle:[NSString stringWithFormat:BITHockeyLocalizedString(@"IntroductionText", @""), _applicationName, _companyName]];
+  title = BITHockeyLocalizedString(@"IntroductionText", @"");
+  [[introductionText cell] setTitle:[NSString stringWithFormat:title, _applicationName]];
   [[commentsTextFieldTitle cell] setTitle:BITHockeyLocalizedString(@"CommentsDisclosureTitle", @"")];
   [[problemDescriptionTextFieldTitle cell] setTitle:BITHockeyLocalizedString(@"ProblemDetailsTitle", @"")];
 
@@ -280,7 +281,6 @@ const CGFloat kDetailsHeight = 285;
   [_crashLogContent release]; _crashLogContent = nil;
   [_logContent release]; _logContent = nil;
   [_applicationName release]; _applicationName = nil;
-  [_companyName release]; _companyName = nil;
   self.userName = nil;
   self.userEmail = nil;
   
