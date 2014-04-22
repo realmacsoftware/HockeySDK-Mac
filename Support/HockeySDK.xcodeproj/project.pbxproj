@@ -499,7 +499,7 @@
 		1EF09D821523574200067A5C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0500;
+				LastUpgradeCheck = 0510;
 			};
 			buildConfigurationList = 1EF09D851523574200067A5C /* Build configuration list for PBXProject "HockeySDK" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -618,7 +618,6 @@
 			baseConfigurationReference = 1E7FB96217D3F45200B7E10D /* buildnumber.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -655,7 +654,6 @@
 			baseConfigurationReference = 1E7FB96217D3F45200B7E10D /* buildnumber.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
